@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <item android:title="Department wise notice">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/eteId"
+                    android:icon="@drawable/ete"
+                    android:title="ETE"/>
+                <item
+                    android:id="@+id/cseId"
+                    android:icon="@drawable/cse"
+                    android:title="CSE" />
+                <item
+                    android:id="@+id/sweId"
+                    android:icon="@drawable/swe"
+                    android:title="SWE" />
+                <item
+                    android:id="@+id/eeeId"
+                    android:icon="@drawable/eee"
+                    android:title="EEE" />
+                <item
+                    android:id="@+id/bbaId"
+                    android:icon="@drawable/bba"
+                    android:title="BBA" />
+
+                <item
+                    android:id="@+id/nfeId"
+                    android:icon="@drawable/nfe"
+                    android:title="NFE" />
+                <item
+                    android:id="@+id/englishId"
+                    android:icon="@drawable/english"
+                    android:title="English" />
+                <item
+                    android:id="@+id/physicsId"
+                    android:icon="@drawable/physics"
+                    android:title="Physics" />
+                <item
+                    android:id="@+id/mathId"
+                    android:icon="@drawable/math"
+                    android:title="Mathematics" />
+            </group>
+        </menu>
+    </item>
+
+</menu>

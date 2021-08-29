@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@android:color/transparent"
+    android:gravity="center"
+    android:layout_margin="5dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp">
+
+        <LinearLayout
+            android:id="@+id/upperLayoutId"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="10">
+
+            <TextView
+                android:id="@+id/dateId"
+                android:textSize="16sp"
+                android:textColor="@color/colorPrimaryDark"
+                android:text=" Date,"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="6"
+                android:fontFamily="sans-serif"
+                android:layout_gravity="center"
+                android:drawableLeft="@drawable/ic_baseline_date"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/timeId"
+                android:textSize="16sp"
+                android:textColor="@color/colorPrimaryDark"
+                android:text=" Time"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="4"
+                android:fontFamily="sans-serif"
+                android:textStyle="bold"
+                android:drawableLeft="@drawable/ic_baseline_access_time_filled_24"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/detailsId"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/upperLayoutId"
+            android:fontFamily="serif-monospace"
+            android:paddingTop="20dp"
+            android:text="Hackathon Notice!"
+            android:textColor="#000"
+            android:textSize="20sp"
+            android:textStyle="bold"/>
+
+    </RelativeLayout>
+
+</LinearLayout>

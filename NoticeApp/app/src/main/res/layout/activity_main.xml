@@ -9,51 +9,69 @@
     android:orientation="vertical"
     android:background="#EAEAEA">
 
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:background="@color/colorPrimaryDark"
-        android:paddingRight="15dp"
-        android:paddingLeft="15dp">
-
-        <ImageView
-            android:id="@+id/backPageId"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="left|center" />
-
-        <TextView
-            android:id="@+id/actionBarTextId"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/poppinsbold"
-            android:gravity="center"
-            android:textColor="#fff"
-            android:textSize="18sp"
-            android:layout_gravity="center"/>
-
-        <ImageView
-            android:id="@+id/notificationId"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="right|center"
-            android:src="@drawable/ic_baseline_notifications_active_24"/>
-
-    </FrameLayout>
-
-    <LinearLayout
+    <androidx.drawerlayout.widget.DrawerLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:layout_marginTop="60dp">
+        tools:openDrawer="start"
+        android:id="@+id/drawerID"
+        android:fitsSystemWindows="true">
 
-        <fragment
-            android:id="@+id/fragmentID"
-            android:name="com.example.noticeapp.HomePage.HomeFragment"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-    </LinearLayout>
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:background="@color/colorPrimaryDark">
+
+                <androidx.appcompat.widget.Toolbar
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:id="@+id/toolBarID"
+                    android:outlineAmbientShadowColor="#ffffff"
+                    android:outlineSpotShadowColor="#ffffff"
+                    android:theme="@style/Animation.Design.BottomSheetDialog"/>
+
+                <TextView
+                    android:id="@+id/actionBarTextId"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppinsbold"
+                    android:gravity="center"
+                    android:textColor="#424242"
+                    android:textSize="18sp"
+                    android:layout_gravity="center"/>
+
+                <ImageView
+                    android:id="@+id/notificationId"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right|center"
+                    android:src="@drawable/ic_baseline_notifications_active_24"
+                    android:layout_marginRight="15dp"/>
+
+            </FrameLayout>
+
+            <fragment
+                android:id="@+id/fragmentID"
+                android:name="com.example.noticeapp.HomePage.HomeFragment"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+
+        </LinearLayout>
+
+        <com.google.android.material.navigation.NavigationView
+            android:layout_width="300dp"
+            android:layout_height="match_parent"
+            android:id="@+id/navigationViewID"
+            app:menu="@menu/activity_main_drawer"
+            app:headerLayout="@layout/nav_header_main"
+            android:layout_gravity="start"
+            android:layout_marginBottom="55dp"/>
+
+    </androidx.drawerlayout.widget.DrawerLayout>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationID"
@@ -61,6 +79,6 @@
         android:layout_height="wrap_content"
         app:menu="@menu/bottom_navigation_menu"
         android:layout_gravity="bottom|center"
-        android:background="#FFFFFF" />
+        android:background="#fff" />
 
 </FrameLayout>

@@ -31,7 +31,6 @@ public class ProfileFragment extends Fragment implements BackListenerFragment, V
 
 //    FirebaseAuth mAuth;
 //    StorageReference storageReference;
-    Button logoutBtn;
     View views, parentLayout;
     ConnectivityManager cm;
     NetworkInfo netInfo;
@@ -41,7 +40,7 @@ public class ProfileFragment extends Fragment implements BackListenerFragment, V
     Fragment fragment;
     FragmentTransaction fragmentTransaction;
     public static BackListenerFragment backBtnListener;
-    CardView changePassword, changePicture;
+    CardView changePassword, changePicture, logoutBtn;
     CircleImageView profilePic;
     private Uri uriProfileImage;
     TextView nameText, emailText, phoneText;
@@ -52,20 +51,6 @@ public class ProfileFragment extends Fragment implements BackListenerFragment, V
         views = inflater.inflate(R.layout.fragment_profile, container, false);
 
         parentLayout = views.findViewById(android.R.id.content);
-
-        ((MainActivity)getActivity()).backPage.setImageResource(R.drawable.back_arrow);
-        ((MainActivity)getActivity()).backPage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ((MainActivity)getActivity()).backPage.setImageDrawable(null);
-                ((MainActivity)getActivity()).actionBarText.setText("Home");
-                fragment = new HomeFragment();
-                fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
-                fragmentTransaction.setCustomAnimations(R.anim.slide_in_left, R.anim.slide_out_right);
-                fragmentTransaction.replace(R.id.fragmentID, fragment, "MY_FRAGMENT");
-                fragmentTransaction.commit();
-            }
-        });
 
         changePassword = views.findViewById(R.id.changePasswordId);
         changePassword.setOnClickListener(this);
@@ -126,7 +111,6 @@ public class ProfileFragment extends Fragment implements BackListenerFragment, V
 
     @Override
     public void onBackPressed() {
-        ((MainActivity)getActivity()).backPage.setImageDrawable(null);
         ((MainActivity)getActivity()).actionBarText.setText("Home");
         fragment = new HomeFragment();
         fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();

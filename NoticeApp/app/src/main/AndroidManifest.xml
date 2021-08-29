@@ -3,7 +3,7 @@
     package="com.example.noticeapp">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:allowBackup="true"
@@ -13,9 +13,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".DepartmentsNotice.ParticularNoticePage"
+            android:exported="true" />
+        <activity
             android:name=".Notification.NotificationActivity"
             android:exported="true"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".Authentication.LoginActivity"
             android:exported="true"
@@ -29,7 +32,7 @@
         <activity
             android:name=".AppAction.MainActivity"
             android:exported="true"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

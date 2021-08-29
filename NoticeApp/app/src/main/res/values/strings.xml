@@ -2,5 +2,13 @@
     <string name="app_name">Notice Board</string>
 
     <string name="register_text"><u>Register Now</u></string>
+    <string name="drawerOpen">drawerOpen</string>
+    <string name="drawerClose">drawerClose</string>
+
+    <string name="sample_notice">Dear Concern,\nSalaam and greetings from EUB!\n\nWe are here to inform you that
+        a National Virtual Innovation Hackathon is going to be arranged by a joint collaboration with CTO Forum Bangladesh,
+        a2i, and Bangladesh Hi-tech Park Authority in association with Daffodil International University and many others.
+        \n\nThis Innovation Hackathon aims to connect talented youth tech professionals, students, entrepreneurs, leaders,
+        and innovators with the top industry professionals in the rising fields of new technologies.</string>
 
 </resources>

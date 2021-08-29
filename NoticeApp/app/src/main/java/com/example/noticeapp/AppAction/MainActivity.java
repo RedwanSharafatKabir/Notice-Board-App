@@ -1,8 +1,12 @@
 package com.example.noticeapp.AppAction;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -23,17 +27,21 @@ import com.example.noticeapp.Interfaces.BackListenerFragment;
 import com.example.noticeapp.Notification.NotificationActivity;
 import com.example.noticeapp.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.BaseTransientBottomBar;
 import com.google.android.material.snackbar.Snackbar;
 
 public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnItemSelectedListener,
-        View.OnClickListener{
+        View.OnClickListener, NavigationView.OnNavigationItemSelectedListener{
 
+    DrawerLayout drawerLayout;
+    public NavigationView navigationView;
+    ActionBarDrawerToggle actionBarDrawerToggle;
     public TextView actionBarText;
-    public ImageView backPage;
     ImageView notificationBtn;
     BottomNavigationView bottomNavigationView;
     View parentLayout;
+    Toolbar toolbar;
     ConnectivityManager cm;
     NetworkInfo netInfo;
     Fragment fragment;
@@ -45,17 +53,31 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        backPage = findViewById(R.id.backPageId);
         actionBarText = findViewById(R.id.actionBarTextId);
-
         cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         netInfo = cm.getActiveNetworkInfo();
         parentLayout = findViewById(android.R.id.content);
+
+        drawerLayout = findViewById(R.id.drawerID);
+        toolbar = findViewById(R.id.toolBarID);
+
+        setSupportActionBar(toolbar);
+        actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout,
+                toolbar, R.string.drawerOpen, R.string.drawerClose);
+        drawerLayout.addDrawerListener(actionBarDrawerToggle);
+        actionBarDrawerToggle.syncState();
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+
+        navigationView = findViewById(R.id.navigationViewID);
+        navigationView.setItemIconTintList(null);
+        navigationView.bringToFront();
 
         notificationBtn = findViewById(R.id.notificationId);
         notificationBtn.setOnClickListener(this);
         bottomNavigationView = findViewById(R.id.bottomNavigationID);
         bottomNavigationView.setOnItemSelectedListener(this);
+
+        navigationView.setNavigationItemSelectedListener(MainActivity.this);
 
         actionBarText.setText("Home");
         fragment = new HomeFragment();
@@ -87,11 +109,84 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        drawerLayout.closeDrawer(GravityCompat.START,true);
         int id = item.getItemId();
+
         switch (id){
+            case R.id.eteId:
+                actionBarText.setText("ETE");
+//                fragment = new EteFragment();
+//                fragmentTransaction = getSupportFragmentManager().beginTransaction();
+//                fragmentTransaction.replace(R.id.fragmentID, fragment);
+//                fragmentTransaction.commit();
+                break;
+
+            case R.id.cseId:
+                actionBarText.setText("CSE");
+//                fragment = new EteFragment();
+//                fragmentTransaction = getSupportFragmentManager().beginTransaction();
+//                fragmentTransaction.replace(R.id.fragmentID, fragment);
+//                fragmentTransaction.commit();
+                break;
+
+            case R.id.sweId:
+                actionBarText.setText("SWE");
+//                fragment = new EteFragment();
+//                fragmentTransaction = getSupportFragmentManager().beginTransaction();
+//                fragmentTransaction.replace(R.id.fragmentID, fragment);
+//                fragmentTransaction.commit();
+                break;
+
+            case R.id.eeeId:
+                actionBarText.setText("EEE");
+//                fragment = new EteFragment();
+//                fragmentTransaction = getSupportFragmentManager().beginTransaction();
+//                fragmentTransaction.replace(R.id.fragmentID, fragment);
+//                fragmentTransaction.commit();
+                break;
+
+            case R.id.bbaId:
+                actionBarText.setText("BBA");
+//                fragment = new EteFragment();
+//                fragmentTransaction = getSupportFragmentManager().beginTransaction();
+//                fragmentTransaction.replace(R.id.fragmentID, fragment);
+//                fragmentTransaction.commit();
+                break;
+
+            case R.id.englishId:
+                actionBarText.setText("English");
+//                fragment = new EteFragment();
+//                fragmentTransaction = getSupportFragmentManager().beginTransaction();
+//                fragmentTransaction.replace(R.id.fragmentID, fragment);
+//                fragmentTransaction.commit();
+                break;
+
+            case R.id.nfeId:
+                actionBarText.setText("NFE");
+//                fragment = new EteFragment();
+//                fragmentTransaction = getSupportFragmentManager().beginTransaction();
+//                fragmentTransaction.replace(R.id.fragmentID, fragment);
+//                fragmentTransaction.commit();
+                break;
+
+            case R.id.physicsId:
+                actionBarText.setText("Physics");
+//                fragment = new EteFragment();
+//                fragmentTransaction = getSupportFragmentManager().beginTransaction();
+//                fragmentTransaction.replace(R.id.fragmentID, fragment);
+//                fragmentTransaction.commit();
+                break;
+
+            case R.id.mathId:
+                actionBarText.setText("Mathematics");
+//                fragment = new EteFragment();
+//                fragmentTransaction = getSupportFragmentManager().beginTransaction();
+//                fragmentTransaction.replace(R.id.fragmentID, fragment);
+//                fragmentTransaction.commit();
+                break;
+
             case R.id.homeID:
                 if (netInfo != null && netInfo.isConnectedOrConnecting()) {
-                    backPage.setImageDrawable(null);
                     actionBarText.setText("Home");
                     fragment = new HomeFragment();
                     fragmentTransaction = getSupportFragmentManager().beginTransaction();

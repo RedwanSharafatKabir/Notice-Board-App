@@ -21,20 +21,6 @@ public class AboutFragment extends Fragment implements BackListenerFragment{
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         views = inflater.inflate(R.layout.fragment_about, container, false);
 
-        ((MainActivity)getActivity()).backPage.setImageResource(R.drawable.back_arrow);
-        ((MainActivity)getActivity()).backPage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ((MainActivity)getActivity()).backPage.setImageDrawable(null);
-                ((MainActivity)getActivity()).actionBarText.setText("Home");
-                fragment = new HomeFragment();
-                fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
-                fragmentTransaction.setCustomAnimations(R.anim.slide_in_left, R.anim.slide_out_right);
-                fragmentTransaction.replace(R.id.fragmentID, fragment, "MY_FRAGMENT");
-                fragmentTransaction.commit();
-            }
-        });
-
         return views;
     }
 
@@ -52,7 +38,6 @@ public class AboutFragment extends Fragment implements BackListenerFragment{
 
     @Override
     public void onBackPressed() {
-        ((MainActivity)getActivity()).backPage.setImageDrawable(null);
         ((MainActivity)getActivity()).actionBarText.setText("Home");
         fragment = new HomeFragment();
         fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
