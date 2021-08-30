@@ -38,7 +38,7 @@ public class AboutFragment extends Fragment implements BackListenerFragment{
 
     @Override
     public void onBackPressed() {
-        ((MainActivity)getActivity()).actionBarText.setText("Home");
+        ((MainActivity)getActivity()).actionBarText.setText("General Notice");
         fragment = new HomeFragment();
         fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
         fragmentTransaction.setCustomAnimations(R.anim.slide_in_left, R.anim.slide_out_right);

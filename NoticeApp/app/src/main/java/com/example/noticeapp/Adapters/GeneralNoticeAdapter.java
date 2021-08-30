@@ -23,7 +23,6 @@ public class GeneralNoticeAdapter extends RecyclerView.Adapter<GeneralNoticeAdap
 
     Context context;
     ArrayList<StoreGeneralNoticeData> storeGeneralNoticeData;
-//    DatabaseReference databaseReference;
 
     public GeneralNoticeAdapter(Context c, ArrayList<StoreGeneralNoticeData> p) {
         context = c;
@@ -38,14 +37,16 @@ public class GeneralNoticeAdapter extends RecyclerView.Adapter<GeneralNoticeAdap
 
     @Override
     public void onBindViewHolder(@NonNull GeneralNoticeAdapter.MyViewHolder holder, int position) {
+        String noticeTitle = storeGeneralNoticeData.get(position).getNoticeTitle();
         String noticeDate = storeGeneralNoticeData.get(position).getNoticeDate();
         String noticeDay = storeGeneralNoticeData.get(position).getNoticeDay();
         String noticeTime = storeGeneralNoticeData.get(position).getNoticeTime();
         String noticeDetails = storeGeneralNoticeData.get(position).getNoticeDetails();
 
+        holder.textView.setText(noticeTitle);
         holder.textView1.setText(" "+noticeDate+", "+noticeDay);
         holder.textView2.setText(" "+noticeTime);
-        holder.textView3.setText(" "+noticeDetails);
+        holder.textView3.setText(noticeDetails);
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -68,13 +69,11 @@ public class GeneralNoticeAdapter extends RecyclerView.Adapter<GeneralNoticeAdap
     }
 
     class MyViewHolder extends RecyclerView.ViewHolder {
-        TextView textView1, textView2, textView3;
+        TextView textView1, textView2, textView3, textView;
 
         public MyViewHolder(@NonNull View itemView){
             super(itemView);
-
-//            databaseReference = FirebaseDatabase.getInstance().getReference("Place Images");
-
+            textView = itemView.findViewById(R.id.titleId);
             textView1 = itemView.findViewById(R.id.dateId);
             textView2 = itemView.findViewById(R.id.timeId);
             textView3 = itemView.findViewById(R.id.detailsId);

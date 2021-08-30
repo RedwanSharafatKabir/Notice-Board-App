@@ -28,6 +28,11 @@ import com.example.noticeapp.AppAction.MainActivity;
 import com.example.noticeapp.Interfaces.BackListenerFragment;
 import com.example.noticeapp.ModelClasses.StoreGeneralNoticeData;
 import com.example.noticeapp.R;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
@@ -39,7 +44,7 @@ public class HomeFragment extends Fragment implements BackListenerFragment{
     ArrayList<StoreGeneralNoticeData> storeGeneralNoticeDataArrayList;
     GeneralNoticeAdapter generalNoticeAdapter;
     ProgressBar progressBar;
-//    DatabaseReference databaseReference;
+    DatabaseReference databaseReference;
     Parcelable recyclerViewState;
     ConnectivityManager cm;
     NetworkInfo netInfo;
@@ -63,7 +68,7 @@ public class HomeFragment extends Fragment implements BackListenerFragment{
         });
 
         storeGeneralNoticeDataArrayList = new ArrayList<StoreGeneralNoticeData>();
-//        databaseReference = FirebaseDatabase.getInstance().getReference("General Notice");
+        databaseReference = FirebaseDatabase.getInstance().getReference("General Notice");
 
         showData();
 
@@ -85,19 +90,15 @@ public class HomeFragment extends Fragment implements BackListenerFragment{
 
     private void showData(){
         if (netInfo != null && netInfo.isConnectedOrConnecting()) {
-//            databaseReference.addValueEventListener(new ValueEventListener() {
-//                @Override
-//                public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                    storeGeneralNoticeDataArrayList.clear();
-//
-//                    for (DataSnapshot item : snapshot.getChildren()) {
-//                        for (DataSnapshot dataSnapshot : item.getChildren()) {
-//                            for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
-//                                StoreGeneralNoticeData storePlaceData = dataSnapshot1.getValue(StoreGeneralNoticeData.class);
-//                                storeGeneralNoticeDataArrayList.add(storePlaceData);
-//                            }
-//                        }
-//                    }
+            databaseReference.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    storeGeneralNoticeDataArrayList.clear();
+
+                    for (DataSnapshot item : snapshot.getChildren()) {
+                        StoreGeneralNoticeData storePlaceData = item.getValue(StoreGeneralNoticeData.class);
+                        storeGeneralNoticeDataArrayList.add(storePlaceData);
+                    }
 
                     generalNoticeAdapter = new GeneralNoticeAdapter(getActivity(), storeGeneralNoticeDataArrayList);
                     recyclerView.setAdapter(generalNoticeAdapter);
@@ -105,13 +106,13 @@ public class HomeFragment extends Fragment implements BackListenerFragment{
                     recyclerView.getLayoutManager().onRestoreInstanceState(recyclerViewState);
 
                     progressBar.setVisibility(View.GONE);
-//                }
-//
-//                @Override
-//                public void onCancelled(@NonNull DatabaseError error) {
-//                    progressBar.setVisibility(View.GONE);
-//                }
-//            });
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+                    progressBar.setVisibility(View.GONE);
+                }
+            });
         }
 
         else {

@@ -1,10 +1,10 @@
 package com.example.noticeapp.ModelClasses;
 
 public class StoreGeneralNoticeData {
-    String noticeId, noticeDate, noticeDay, noticeTime, noticeDetails;
+    String noticeTitle, noticeDate, noticeDay, noticeTime, noticeDetails;
 
-    public StoreGeneralNoticeData(String noticeId, String noticeDate, String noticeDay, String noticeTime, String noticeDetails) {
-        this.noticeId = noticeId;
+    public StoreGeneralNoticeData(String noticeTitle, String noticeDate, String noticeDay, String noticeTime, String noticeDetails) {
+        this.noticeTitle = noticeTitle;
         this.noticeDate = noticeDate;
         this.noticeDay = noticeDay;
         this.noticeTime = noticeTime;
@@ -14,12 +14,12 @@ public class StoreGeneralNoticeData {
     public StoreGeneralNoticeData() {
     }
 
-    public String getNoticeId() {
-        return noticeId;
+    public String getNoticeTitle() {
+        return noticeTitle;
     }
 
-    public void setNoticeId(String noticeId) {
-        this.noticeId = noticeId;
+    public void setNoticeTitle(String noticeTitle) {
+        this.noticeTitle = noticeTitle;
     }
 
     public String getNoticeDate() {

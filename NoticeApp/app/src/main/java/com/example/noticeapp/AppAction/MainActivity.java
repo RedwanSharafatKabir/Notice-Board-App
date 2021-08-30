@@ -79,7 +79,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
         navigationView.setNavigationItemSelectedListener(MainActivity.this);
 
-        actionBarText.setText("Home");
+        actionBarText.setText("General Notice");
         fragment = new HomeFragment();
         fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.fragmentID, fragment, "MY_FRAGMENT");
@@ -187,7 +187,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
             case R.id.homeID:
                 if (netInfo != null && netInfo.isConnectedOrConnecting()) {
-                    actionBarText.setText("Home");
+                    actionBarText.setText("General Notice");
                     fragment = new HomeFragment();
                     fragmentTransaction = getSupportFragmentManager().beginTransaction();
                     fragmentTransaction.replace(R.id.fragmentID, fragment, "MY_FRAGMENT");

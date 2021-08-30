@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "105099249087",
+    "project_id": "smart-notice-board-972be",
+    "storage_bucket": "smart-notice-board-972be.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:105099249087:android:c986c08fc8857b84ab4d0a",
+        "android_client_info": {
+          "package_name": "com.example.noticeapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "105099249087-2g54h0g40m7rl7lj97k6gjbndv4rfq99.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.noticeapp",
+            "certificate_hash": "89684ac75846434ab782ba2a6b96533dbcc5fbb7"
+          }
+        },
+        {
+          "client_id": "105099249087-6riopri2vn139uu3otjkk40u5m0arl6n.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAVkoTW7ORTIcZvwHKPjGM5bMT-8fCT7hU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "105099249087-6riopri2vn139uu3otjkk40u5m0arl6n.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

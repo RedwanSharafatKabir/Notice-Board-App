@@ -1,7 +1,8 @@
 <resources>
-    <string name="app_name">Notice Board</string>
+    <string name="app_name">Smart Notice Board</string>
 
     <string name="register_text"><u>Register Now</u></string>
+    <string name="login_text"><u>Login</u></string>
     <string name="drawerOpen">drawerOpen</string>
     <string name="drawerClose">drawerClose</string>
 
@@ -10,5 +11,7 @@
         a2i, and Bangladesh Hi-tech Park Authority in association with Daffodil International University and many others.
         \n\nThis Innovation Hackathon aims to connect talented youth tech professionals, students, entrepreneurs, leaders,
         and innovators with the top industry professionals in the rising fields of new technologies.</string>
+
+    <string name="title">Hackathon Notice!</string>
 
 </resources>

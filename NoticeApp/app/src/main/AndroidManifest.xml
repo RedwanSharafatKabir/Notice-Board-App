@@ -13,6 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".Authentication.RegisterActivity"
+            android:exported="true" />
+        <activity
             android:name=".DepartmentsNotice.ParticularNoticePage"
             android:exported="true" />
         <activity
