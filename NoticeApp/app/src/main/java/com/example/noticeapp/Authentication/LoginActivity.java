@@ -44,7 +44,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     CheckBox rememberPass;
     View parentLayout;
     Button enterBtn;
-    public TextView signUpPage, textViewHome;
+    public TextView signUpPage, textViewHome, signUpTeacherPage;
     ProgressDialog waitingDialog;
     ConnectivityManager cm;
     NetworkInfo netInfo;
@@ -74,6 +74,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         enterBtn.setOnClickListener(this);
         signUpPage = findViewById(R.id.signUpPageId);
         signUpPage.setOnClickListener(this);
+        signUpTeacherPage = findViewById(R.id.signUpTeacherPageId);
+        signUpTeacherPage.setOnClickListener(this);
     }
 
     @Override
@@ -181,6 +183,13 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     }
                 }
             }
+        }
+
+        if(v.getId()==R.id.signUpTeacherPageId){
+            finish();
+            Intent intent = new Intent(LoginActivity.this, RegisterTeacherActivity.class);
+            startActivity(intent);
+            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
         }
 
         if(v.getId()==R.id.signUpPageId){

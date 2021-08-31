@@ -1,10 +1,13 @@
 <resources>
     <string name="app_name">Smart Notice Board</string>
 
-    <string name="register_text"><u>Register Now</u></string>
+    <string name="register_text"><u>Register As Student</u></string>
+    <string name="register_teacher_text"><u>Register As Teacher</u></string>
     <string name="login_text"><u>Login</u></string>
     <string name="drawerOpen">drawerOpen</string>
     <string name="drawerClose">drawerClose</string>
+
+    <string name="title">Hackathon Notice!</string>
 
     <string name="sample_notice">Dear Concern,\nSalaam and greetings from EUB!\n\nWe are here to inform you that
         a National Virtual Innovation Hackathon is going to be arranged by a joint collaboration with CTO Forum Bangladesh,
@@ -12,6 +15,31 @@
         \n\nThis Innovation Hackathon aims to connect talented youth tech professionals, students, entrepreneurs, leaders,
         and innovators with the top industry professionals in the rising fields of new technologies.</string>
 
-    <string name="title">Hackathon Notice!</string>
+    <string name="cse_name">Department of\nComputer Science and Engineering</string>
+    <string name="about_cse">The Department of Computer Science and Engineering (CSE) is one of the major academic units of the State University of Bangladesh. It plays a vital role in producing IT professionals to serve the new and fast-growing knowledge-based industry.\n\nThe Department offers B.Sc. in CSE (Bachelor of Science in Computer Science and Engineering) program. Courses are conducted utilizing advanced technology with an emphasis on hands-on-training. With academicians with excellent work experience and impressive credentials, the students are assured of high quality education, suited for the evolving era. The academicians prepare students to meet the challenge of a global work environment as well as the shortfall of an emerging ICT sector in Bangladesh. Class lectures focus on real-life problem solving as used in the industry with an underlying emphasis on the foundational aspects of CSE.</string>
+
+    <string name="english_name">Department of English</string>
+    <string name="about_english">The objective of the department is mainly to develop students’ English language proficiency, and intellectual and inter-personal qualities and characteristics. The programs offered by the Department are multi-syllabus-based combining language and literature courses in order to make career options wide and free ranging from teaching to media, government to multi-national jobs. Keeping this in mind the department offers Bachelor of Arts and Masters of Arts in English curricula that are not only interesting but also provide a vibrant, stimulating and supportive study environment.</string>
+
+    <string name="ete_name">Department of\nElectronics and Telecommunication Engineering</string>
+    <string name="about_ete">Electronics and Telecommunication Engineering is an engineering discipline that brings together electrical engineering with computer science to enhance telecommunication systems.The work ranges from basic circuit design to strategic mass developments. A telecommunication engineer is responsible for designing and overseeing the installation of telecommunications equipment and facilities, such as complex electronic switching systems, copper wire telephone facilities, and fiber optics. Telecommunication engineering also overlaps heavily with broadcast engineering.</string>
+
+    <string name="swe_name">Department of\nSoftware Engineering</string>
+    <string name="about_swe">Software Engineering (SwE) is a computing as well as an engineering discipline: it applies the principles of computer science, mathematics, and engineering to achieving high quality and cost-effective solutions to software problems in a systematic, controlled, and efficient manner.\n\nThe Software Engineering Bachelor’s program offered by the department of Software Engineering is a leading program in KSA and intends to fill an important gap of lack of specialized and skilled software engineers. Graduates from the program, because of their high-quality and specialized education in software engineering, are expected to contribute very positively to the field of software development within the kingdom and the region by improving the quality of developed software as well as reducing the development costs.</string>
+
+    <string name="phy_name">Department of Physics</string>
+    <string name="about_phy">The Physics department offers the four-year B.Sc. (Honors) degree programme where students are taught courses in Physics and other basic sciences (Chemistry, Statistics), computer programming as well as English Language course. The department also runs a 1.5-year M.S. in Physics degree programme as well as an active PhD programme with a specialization in many major and frontline areas of Physics.</string>
+
+    <string name="eee_name">Department of\nElectrical and Electronic Engineering</string>
+    <string name="about_eee">Department of Electrical and Electronic Engineering (EEE) is one of the most demanding and leading departments in European University of Bangladesh. We have well-equipped modern laboratories where the students can learn and demonstrate their theoretical knowledge. The EEE department possesses knowledgeable and experienced teachers who are well-noted in their respective fields of teaching and research.</string>
+
+    <string name="bba_name">Department of\nBusiness Administration</string>
+    <string name="about_bba">Welcome to the Bachelor of Business Administration (BBA) Program, School of Business, at European University of Bangladesh. Bachelor of Business Administration (BBA) program offers a four-year BBA degree at the undergraduate level which empowers the undergraduates to excel in both theoretical knowledge as well as real life applications of Business and competitive business world.</string>
+
+    <string name="math_name">Department of Mathematics</string>
+    <string name="about_math">Welcome to the Department of Mathematics at the European University of Bangladesh. We offer exceptional oppotunities for study and research in Mathematics at the undergraduate level, graduate level, and at the professional research level in an excellent scientific environment. Join us in exploring these opportunities.</string>
+
+    <string name="nfe_name">Department of\nNutrition and Food Engineering</string>
+    <string name="about_nfe">The department brought a balance of engineering and food processing. The students get a detailed knowledge of food engineering principles and food processing systems.</string>
 
 </resources>

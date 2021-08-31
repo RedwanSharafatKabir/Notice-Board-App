@@ -95,6 +95,17 @@
                 android:textColor="@color/colorPrimaryDark"
                 android:textStyle="bold"/>
 
+            <TextView
+                android:id="@+id/signUpTeacherPageId"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="@string/register_teacher_text"
+                android:textSize="16sp"
+                android:gravity="center"
+                android:textColor="@color/colorPrimaryDark"
+                android:textStyle="bold"/>
+
         </LinearLayout>
 
     </ScrollView>

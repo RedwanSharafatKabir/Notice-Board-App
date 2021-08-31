@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Authentication.RegisterTeacherActivity"
+    android:background="#fff"
+    android:orientation="vertical"
+    android:gravity="center">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@color/colorPrimaryDark">
+
+        <ImageView
+            android:id="@+id/backFromTeacherId"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/back_arrow"
+            android:layout_gravity="center|left"
+            android:layout_marginLeft="15dp"/>
+
+    </FrameLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="15dp">
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppinsbold"
+                android:gravity="center"
+                android:text="Sign up"
+                android:textColor="@color/colorAccent"
+                android:textSize="25sp"/>
+
+            <EditText
+                android:id="@+id/enterTeacherEmailSignupId"
+                android:inputType="textEmailAddress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableRight="@drawable/ic_email"
+                android:padding="15dp"
+                android:textColor="#000"
+                android:hint=" Email"
+                android:background="@drawable/button_border"
+                android:textSize="16sp"
+                android:layout_marginTop="20dp"/>
+
+            <EditText
+                android:id="@+id/enterTeacherPhoneSignupId"
+                android:inputType="number"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableRight="@drawable/ic_phone"
+                android:padding="15dp"
+                android:textColor="#000"
+                android:hint=" Phone"
+                android:background="@drawable/button_border"
+                android:textSize="16sp"
+                android:layout_marginTop="20dp"/>
+
+            <EditText
+                android:id="@+id/enterTeacherIdSignupId"
+                android:inputType="text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableRight="@drawable/ic_baseline_teacher"
+                android:padding="15dp"
+                android:textColor="#000"
+                android:hint=" Teacher ID"
+                android:background="@drawable/button_border"
+                android:textSize="16sp"
+                android:layout_marginTop="20dp"/>
+
+            <EditText
+                android:id="@+id/enterTeacherNameSignupId"
+                android:inputType="text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableRight="@drawable/ic_baseline_person_24"
+                android:padding="15dp"
+                android:textColor="#000"
+                android:hint=" Username"
+                android:background="@drawable/button_border"
+                android:textSize="16sp"
+                android:layout_marginTop="20dp"/>
+
+            <EditText
+                android:id="@+id/enterTeacherPasswordSignupId"
+                android:inputType="textPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableRight="@drawable/password_lock"
+                android:padding="15dp"
+                android:textColor="#000"
+                android:hint=" Password"
+                android:background="@drawable/button_border"
+                android:textSize="16sp"
+                android:layout_marginTop="20dp"/>
+
+            <Button
+                android:id="@+id/signUpTeacherId"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:background="@drawable/rectangle_background"
+                android:text="Enter"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="#fff"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="Already have an account ?"
+                android:textSize="16sp"
+                android:gravity="center"
+                android:textColor="#7E7E7E" />
+
+            <TextView
+                android:id="@+id/loginPageFromTcId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="@string/login_text"
+                android:textSize="16sp"
+                android:gravity="center"
+                android:textColor="@color/colorPrimaryDark"
+                android:textStyle="bold"
+                android:layout_gravity="center"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

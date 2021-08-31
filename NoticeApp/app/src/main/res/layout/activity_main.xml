@@ -81,4 +81,23 @@
         android:layout_gravity="bottom|center"
         android:background="#fff" />
 
+    <TextView
+        android:id="@+id/addNoticeBtnId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="70dp"
+        android:layout_gravity="center|bottom|right"
+        android:background="@drawable/back_design"
+        android:gravity="center"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:paddingRight="15dp"
+        android:paddingLeft="15dp"
+        android:text=" Add Notice"
+        android:textColor="#fff"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:drawableLeft="@drawable/ic_baseline_add_24"/>
+
 </FrameLayout>

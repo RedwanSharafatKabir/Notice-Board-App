@@ -13,6 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".Authentication.RegisterTeacherActivity"
+            android:exported="true" />
+        <activity
             android:name=".Authentication.RegisterActivity"
             android:exported="true" />
         <activity
