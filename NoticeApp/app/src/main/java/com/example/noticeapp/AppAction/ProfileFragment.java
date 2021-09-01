@@ -63,7 +63,7 @@ public class ProfileFragment extends Fragment implements BackListenerFragment, V
     FirebaseAuth mAuth;
     FirebaseUser user;
     StorageReference storageReference;
-    DatabaseReference databaseReference, imageDatabaseReference;
+    DatabaseReference databaseReference, imageDatabaseReference, teacherReference;
     View views, parentLayout;
     ConnectivityManager cm;
     NetworkInfo netInfo;
@@ -83,6 +83,7 @@ public class ProfileFragment extends Fragment implements BackListenerFragment, V
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         views = inflater.inflate(R.layout.fragment_profile, container, false);
 
+        ((MainActivity) getActivity()).addNoticeBtn.setVisibility(View.GONE);
         parentLayout = views.findViewById(android.R.id.content);
         mAuth = FirebaseAuth.getInstance();
         user = mAuth.getCurrentUser();
@@ -107,9 +108,10 @@ public class ProfileFragment extends Fragment implements BackListenerFragment, V
         netInfo = cm.getActiveNetworkInfo();
         databaseReference = FirebaseDatabase.getInstance().getReference("User Info");
         imageDatabaseReference = FirebaseDatabase.getInstance().getReference("User Image");
+        teacherReference = FirebaseDatabase.getInstance().getReference("Teacher Info");
 
         if (netInfo != null && netInfo.isConnectedOrConnecting()) {
-            getUserData();
+            checkUserOrTeacher();
         } else {
             snackbar = Snackbar.make(parentLayout, "Turn on internet connection", Snackbar.LENGTH_LONG);
             View sbView = snackbar.getView();
@@ -119,6 +121,114 @@ public class ProfileFragment extends Fragment implements BackListenerFragment, V
         }
 
         return views;
+    }
+
+    private void checkUserOrTeacher(){
+        try {
+            teacherReference.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    try {
+                        for(DataSnapshot item: snapshot.getChildren()){
+                            try {
+                                if (userPhone.equals(item.getKey())) {
+                                    getTeacherData();
+                                }
+
+                            } catch (Exception e){
+                                Log.i("Error ", e.getMessage());
+                            }
+                        }
+                    } catch (Exception e){
+                        Log.i("Error ", e.getMessage());
+                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+                    Log.i("Error ", error.getMessage());
+                }
+            });
+
+        }
+        catch (Exception e){
+            Log.i("Error ", e.getMessage());
+        }
+
+        try {
+            databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    try {
+                        for(DataSnapshot item: snapshot.getChildren()){
+                            try {
+                                if (userPhone.equals(item.getKey())) {
+                                    getUserData();
+                                }
+
+                            } catch (Exception e){
+                                Log.i("Error ", e.getMessage());
+                            }
+                        }
+                    } catch (Exception e){
+                        Log.i("Error ", e.getMessage());
+                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+                    Log.i("Error ", error.getMessage());
+                }
+            });
+
+        }
+        catch (Exception e){
+            Log.i("Error ", e.getMessage());
+        }
+    }
+
+    private void getTeacherData(){
+        teacherReference.child(userPhone).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                userName = snapshot.child("teachername").getValue().toString();
+                userEmail = snapshot.child("teacherEmail").getValue().toString();
+
+                nameText.setText(userName);
+                emailText.setText(userEmail);
+                phoneText.setText(userPhone);
+
+                try{
+                    imageDatabaseReference.child(userPhone).child("avatar").addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            try {
+                                Picasso.get().load(snapshot.getValue().toString()).into(profilePic);
+                                progressBar.setVisibility(View.GONE);
+
+                            } catch (Exception e){
+                                Log.i("Error", e.getMessage());
+                                progressBar.setVisibility(View.GONE);
+                            }
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+                            progressBar.setVisibility(View.GONE);
+                        }
+                    });
+
+                } catch (Exception e){
+                    Log.i("Error", e.getMessage());
+                    progressBar.setVisibility(View.GONE);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                progressBar.setVisibility(View.GONE);
+            }
+        });
     }
 
     private void getUserData(){
@@ -314,7 +424,8 @@ public class ProfileFragment extends Fragment implements BackListenerFragment, V
 
     @Override
     public void onBackPressed() {
-        ((MainActivity)getActivity()).actionBarText.setText("General Notice");
+        ((MainActivity) getActivity()).actionBarText.setText("General Notice");
+        ((MainActivity) getActivity()).setBtnVisibility();
         fragment = new HomeFragment();
         fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
         fragmentTransaction.setCustomAnimations(R.anim.slide_in_left, R.anim.slide_out_right);
@@ -322,4 +433,3 @@ public class ProfileFragment extends Fragment implements BackListenerFragment, V
         fragmentTransaction.commit();
     }
 }
-

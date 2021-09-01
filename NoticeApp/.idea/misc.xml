@@ -11,6 +11,7 @@
         <entry key="..\:/Users/Redwan/OneDrive/Desktop/NoticeApp/app/src/main/res/drawable/add_photo.xml" value="0.22552083333333334" />
         <entry key="..\:/Users/Redwan/OneDrive/Desktop/NoticeApp/app/src/main/res/drawable/back_arrow.xml" value="0.22552083333333334" />
         <entry key="..\:/Users/Redwan/OneDrive/Desktop/NoticeApp/app/src/main/res/drawable/back_design.xml" value="0.22552083333333334" />
+        <entry key="..\:/Users/Redwan/OneDrive/Desktop/NoticeApp/app/src/main/res/drawable/btn_background.xml" value="0.22552083333333334" />
         <entry key="..\:/Users/Redwan/OneDrive/Desktop/NoticeApp/app/src/main/res/drawable/budget_edittext.xml" value="0.22552083333333334" />
         <entry key="..\:/Users/Redwan/OneDrive/Desktop/NoticeApp/app/src/main/res/drawable/button_background.xml" value="0.22552083333333334" />
         <entry key="..\:/Users/Redwan/OneDrive/Desktop/NoticeApp/app/src/main/res/drawable/button_border.xml" value="0.22552083333333334" />
@@ -36,12 +37,18 @@
         <entry key="..\:/Users/Redwan/OneDrive/Desktop/NoticeApp/app/src/main/res/layout/activity_login.xml" value="0.2" />
         <entry key="..\:/Users/Redwan/OneDrive/Desktop/NoticeApp/app/src/main/res/layout/activity_main.xml" value="0.22" />
         <entry key="..\:/Users/Redwan/OneDrive/Desktop/NoticeApp/app/src/main/res/layout/activity_notification.xml" value="0.22" />
+        <entry key="..\:/Users/Redwan/OneDrive/Desktop/NoticeApp/app/src/main/res/layout/activity_particular_general_notice.xml" value="0.209375" />
+        <entry key="..\:/Users/Redwan/OneDrive/Desktop/NoticeApp/app/src/main/res/layout/activity_particular_notice.xml" value="0.209375" />
         <entry key="..\:/Users/Redwan/OneDrive/Desktop/NoticeApp/app/src/main/res/layout/activity_particular_notice_page.xml" value="0.209375" />
         <entry key="..\:/Users/Redwan/OneDrive/Desktop/NoticeApp/app/src/main/res/layout/activity_register.xml" value="0.22" />
         <entry key="..\:/Users/Redwan/OneDrive/Desktop/NoticeApp/app/src/main/res/layout/activity_register_teacher.xml" value="0.209375" />
+        <entry key="..\:/Users/Redwan/OneDrive/Desktop/NoticeApp/app/src/main/res/layout/department_notice_adapter.xml" value="0.22" />
+        <entry key="..\:/Users/Redwan/OneDrive/Desktop/NoticeApp/app/src/main/res/layout/division_spinner_adapter.xml" value="0.209375" />
         <entry key="..\:/Users/Redwan/OneDrive/Desktop/NoticeApp/app/src/main/res/layout/fragment_about.xml" value="0.2" />
         <entry key="..\:/Users/Redwan/OneDrive/Desktop/NoticeApp/app/src/main/res/layout/fragment_bba.xml" value="0.209375" />
+        <entry key="..\:/Users/Redwan/OneDrive/Desktop/NoticeApp/app/src/main/res/layout/fragment_create_notice_dialog.xml" value="0.22" />
         <entry key="..\:/Users/Redwan/OneDrive/Desktop/NoticeApp/app/src/main/res/layout/fragment_cse.xml" value="0.209375" />
+        <entry key="..\:/Users/Redwan/OneDrive/Desktop/NoticeApp/app/src/main/res/layout/fragment_department_notice.xml" value="0.209375" />
         <entry key="..\:/Users/Redwan/OneDrive/Desktop/NoticeApp/app/src/main/res/layout/fragment_eee.xml" value="0.209375" />
         <entry key="..\:/Users/Redwan/OneDrive/Desktop/NoticeApp/app/src/main/res/layout/fragment_eng.xml" value="0.209375" />
         <entry key="..\:/Users/Redwan/OneDrive/Desktop/NoticeApp/app/src/main/res/layout/fragment_ete.xml" value="0.25" />

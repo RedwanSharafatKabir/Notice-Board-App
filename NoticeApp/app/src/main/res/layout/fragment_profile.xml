@@ -72,7 +72,7 @@
                             android:layout_height="wrap_content"
                             android:textStyle="bold"
                             android:textSize="16sp"
-                            android:textColor="@color/colorPrimaryDark"
+                            android:textColor="#FF58A0"
                             android:layout_gravity="center"
                             android:textAlignment="center"/>
 
@@ -107,7 +107,7 @@
                             android:layout_height="wrap_content"
                             android:textStyle="bold"
                             android:textSize="16sp"
-                            android:textColor="@color/colorPrimaryDark"
+                            android:textColor="#FF58A0"
                             android:layout_gravity="center"
                             android:textAlignment="center"/>
 
@@ -159,7 +159,7 @@
                             android:layout_height="wrap_content"
                             android:textStyle="bold"
                             android:textSize="12sp"
-                            android:textColor="@color/colorPrimaryDark"
+                            android:textColor="#FF58A0"
                             android:layout_gravity="center"
                             android:textAlignment="center"/>
 
@@ -195,7 +195,7 @@
                             android:text="Change Picture"
                             android:textStyle="bold"
                             android:textSize="16sp"
-                            android:textColor="@color/colorPrimaryDark"
+                            android:textColor="#FF58A0"
                             android:layout_gravity="center"
                             android:textAlignment="center"/>
 
@@ -242,7 +242,7 @@
                             android:text="Reset Password"
                             android:textStyle="bold"
                             android:textSize="16sp"
-                            android:textColor="@color/colorPrimaryDark"
+                            android:textColor="#FF58A0"
                             android:layout_gravity="center"
                             android:textAlignment="center"/>
 
@@ -278,7 +278,7 @@
                             android:text="Log Out"
                             android:textStyle="bold"
                             android:textSize="16sp"
-                            android:textColor="@color/colorPrimaryDark"
+                            android:textColor="#FF58A0"
                             android:layout_gravity="center"
                             android:textAlignment="center"/>
 

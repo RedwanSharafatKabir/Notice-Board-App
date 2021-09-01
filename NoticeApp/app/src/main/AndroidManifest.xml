@@ -13,16 +13,16 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".NoticeAndNotification.ParticularNoticeActivity"
+            android:exported="true" />
+        <activity
             android:name=".Authentication.RegisterTeacherActivity"
             android:exported="true" />
         <activity
             android:name=".Authentication.RegisterActivity"
             android:exported="true" />
         <activity
-            android:name=".DepartmentsNotice.ParticularNoticePage"
-            android:exported="true" />
-        <activity
-            android:name=".Notification.NotificationActivity"
+            android:name=".NoticeAndNotification.NotificationActivity"
             android:exported="true"
             android:screenOrientation="portrait" />
         <activity

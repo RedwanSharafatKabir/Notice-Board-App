@@ -7,41 +7,39 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.noticeapp.ModelClasses.StoreGeneralNoticeData;
+import com.example.noticeapp.ModelClasses.StoreDepartmentNoticeData;
 import com.example.noticeapp.NoticeAndNotification.ParticularNoticeActivity;
 import com.example.noticeapp.R;
-
 import java.util.ArrayList;
 
-public class GeneralNoticeAdapter extends RecyclerView.Adapter<GeneralNoticeAdapter.MyViewHolder> {
+public class DepartmentNoticeAdapter extends RecyclerView.Adapter<DepartmentNoticeAdapter.MyViewHolder> {
 
     Context context;
-    ArrayList<StoreGeneralNoticeData> storeGeneralNoticeData;
+    ArrayList<StoreDepartmentNoticeData> storeDepartmentNoticeData;
 
-    public GeneralNoticeAdapter(Context c, ArrayList<StoreGeneralNoticeData> p) {
+    public DepartmentNoticeAdapter(Context c, ArrayList<StoreDepartmentNoticeData> p) {
         context = c;
-        storeGeneralNoticeData = p;
+        storeDepartmentNoticeData = p;
     }
 
     @NonNull
     @Override
-    public GeneralNoticeAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new GeneralNoticeAdapter.MyViewHolder(LayoutInflater.from(context).inflate(R.layout.general_notice_adapter, parent, false));
+    public DepartmentNoticeAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        return new DepartmentNoticeAdapter.MyViewHolder(LayoutInflater.from(context).inflate(R.layout.department_notice_adapter, parent, false));
     }
 
     @Override
-    public void onBindViewHolder(@NonNull GeneralNoticeAdapter.MyViewHolder holder, int position) {
-        String departmentName = "General_Notice";
-        String noticeTitle = storeGeneralNoticeData.get(position).getNoticeTitle();
-        String noticeDate = storeGeneralNoticeData.get(position).getNoticeDate();
-        String noticeDay = storeGeneralNoticeData.get(position).getNoticeDay();
-        String noticeTime = storeGeneralNoticeData.get(position).getNoticeTime();
-        String noticeDetails = storeGeneralNoticeData.get(position).getNoticeDetails();
+    public void onBindViewHolder(@NonNull DepartmentNoticeAdapter.MyViewHolder holder, int position) {
+        String departmentName = storeDepartmentNoticeData.get(position).getDepartmentName();
+        String noticeTitle = storeDepartmentNoticeData.get(position).getNoticeTitle();
+        String noticeDate = storeDepartmentNoticeData.get(position).getNoticeDate();
+        String noticeDay = storeDepartmentNoticeData.get(position).getNoticeDay();
+        String noticeTime = storeDepartmentNoticeData.get(position).getNoticeTime();
+        String noticeDetails = storeDepartmentNoticeData.get(position).getNoticeDetails();
 
         holder.textView.setText(noticeTitle+"!");
         holder.textView1.setText(" "+noticeDate+", "+noticeDay);
@@ -66,7 +64,7 @@ public class GeneralNoticeAdapter extends RecyclerView.Adapter<GeneralNoticeAdap
 
     @Override
     public int getItemCount() {
-        return storeGeneralNoticeData.size();
+        return storeDepartmentNoticeData.size();
     }
 
     class MyViewHolder extends RecyclerView.ViewHolder {
@@ -75,11 +73,11 @@ public class GeneralNoticeAdapter extends RecyclerView.Adapter<GeneralNoticeAdap
 
         public MyViewHolder(@NonNull View itemView){
             super(itemView);
-            textView = itemView.findViewById(R.id.titleId);
-            textView1 = itemView.findViewById(R.id.dateId);
-            textView2 = itemView.findViewById(R.id.timeId);
+            textView = itemView.findViewById(R.id.titleDeptId);
+            textView1 = itemView.findViewById(R.id.dateDeptId);
+            textView2 = itemView.findViewById(R.id.timeDeptId);
 
-            nextToDetails = itemView.findViewById(R.id.nextToDetailsGeneralId);
+            nextToDetails = itemView.findViewById(R.id.nextToDetailsId);
         }
     }
 }

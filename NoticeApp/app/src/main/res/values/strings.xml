@@ -7,6 +7,19 @@
     <string name="drawerOpen">drawerOpen</string>
     <string name="drawerClose">drawerClose</string>
 
+    <string-array name="department_array">
+        <item>General Notice</item>
+        <item>ETE</item>
+        <item>CSE</item>
+        <item>SWE</item>
+        <item>EEE</item>
+        <item>BBA</item>
+        <item>NFE</item>
+        <item>English</item>
+        <item>Physics</item>
+        <item>Mathematics</item>
+    </string-array>
+
     <string name="title">Hackathon Notice!</string>
 
     <string name="sample_notice">Dear Concern,\nSalaam and greetings from EUB!\n\nWe are here to inform you that

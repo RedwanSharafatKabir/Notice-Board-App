@@ -10,7 +10,6 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
@@ -18,28 +17,14 @@ import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.example.noticeapp.Authentication.LoginActivity;
-import com.example.noticeapp.DepartmentsNotice.BbaFragment;
-import com.example.noticeapp.DepartmentsNotice.CseFragment;
-import com.example.noticeapp.DepartmentsNotice.EeeFragment;
-import com.example.noticeapp.DepartmentsNotice.EngFragment;
-import com.example.noticeapp.DepartmentsNotice.EteFragment;
-import com.example.noticeapp.DepartmentsNotice.MathFragment;
-import com.example.noticeapp.DepartmentsNotice.NfeFragment;
-import com.example.noticeapp.DepartmentsNotice.PhyFragment;
-import com.example.noticeapp.DepartmentsNotice.SweFragment;
+import com.example.noticeapp.DepartmentsNotice.DepartmentNoticeFragment;
+import com.example.noticeapp.NoticeAndNotification.CreateNoticeDialog;
 import com.example.noticeapp.HomePage.HomeFragment;
-import com.example.noticeapp.Interfaces.BackListenerFragment;
-import com.example.noticeapp.Notification.NotificationActivity;
+import com.example.noticeapp.NoticeAndNotification.NotificationActivity;
 import com.example.noticeapp.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
@@ -56,7 +41,7 @@ import com.google.firebase.database.ValueEventListener;
 public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnItemSelectedListener,
         View.OnClickListener, NavigationView.OnNavigationItemSelectedListener{
 
-    TextView addNoticeBtn;
+    public TextView addNoticeBtn;
     DrawerLayout drawerLayout;
     public NavigationView navigationView;
     ActionBarDrawerToggle actionBarDrawerToggle;
@@ -69,11 +54,12 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     FirebaseAuth mAuth;
     FirebaseUser user;
     NetworkInfo netInfo;
-    String userPhone;
+    String userPhone, departmentName;
     Fragment fragment;
     Snackbar snackbar;
     DatabaseReference teacherReference;
     FragmentTransaction fragmentTransaction;
+    Bundle bundle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -107,7 +93,6 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         bottomNavigationView = findViewById(R.id.bottomNavigationID);
         bottomNavigationView.setOnItemSelectedListener(this);
         addNoticeBtn = findViewById(R.id.addNoticeBtnId);
-        addNoticeBtn.setOnClickListener(this);
         addNoticeBtn.setVisibility(View.GONE);
 
         navigationView.setNavigationItemSelectedListener(MainActivity.this);
@@ -117,6 +102,29 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.fragmentID, fragment, "MY_FRAGMENT");
         fragmentTransaction.commit();
+
+        Intent intent = getIntent();
+        try {
+            departmentName = intent.getStringExtra("deptNameKey");
+        } catch (Exception e){
+            Log.i("Error ", e.getMessage());
+        }
+
+        try {
+            switch (getIntent().getStringExtra("EXTRA")) {
+                case "openDeptFragment":
+                    bundle = new Bundle();
+                    bundle.putString("dept_Key", departmentName);
+                    fragment = new DepartmentNoticeFragment();
+                    fragment.setArguments(bundle);
+                    fragmentTransaction = getSupportFragmentManager().beginTransaction();
+                    fragmentTransaction.replace(R.id.fragmentID, fragment, "MY_FRAGMENT");
+                    fragmentTransaction.commit();
+                    break;
+            }
+        } catch (Exception e){
+            Log.i("Error ", e.getMessage());
+        }
 
         try {
             switch (getIntent().getStringExtra("EXTRA")) {
@@ -134,10 +142,9 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         teacherReference = FirebaseDatabase.getInstance().getReference("Teacher Info");
 
         setBtnVisibility();
-        checkBtnVisibility();
     }
 
-    private void setBtnVisibility(){
+    public void setBtnVisibility(){
         try {
             teacherReference.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
@@ -147,6 +154,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                             try {
                                 if (userPhone.equals(item.getKey())) {
                                     addNoticeBtn.setVisibility(View.VISIBLE);
+                                    checkBtnVisibility();
                                 }
 
                             } catch (Exception e){
@@ -172,10 +180,16 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         }
     }
 
-    private void checkBtnVisibility(){
+    public void checkBtnVisibility(){
         // Open create notice dialog
         if(addNoticeBtn.getVisibility()==View.VISIBLE){
-            Toast.makeText(getApplicationContext(), "Visible", Toast.LENGTH_SHORT).show();
+            addNoticeBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    CreateNoticeDialog createNoticeDialog = new CreateNoticeDialog();
+                    createNoticeDialog.show(getSupportFragmentManager(), "Sample dialog");
+                }
+            });
         }
     }
 
@@ -195,7 +209,10 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         switch (id){
             case R.id.eteId:
                 actionBarText.setText("ETE");
-                fragment = new EteFragment();
+                bundle = new Bundle();
+                bundle.putString("dept_Key", "ETE");
+                fragment = new DepartmentNoticeFragment();
+                fragment.setArguments(bundle);
                 fragmentTransaction = getSupportFragmentManager().beginTransaction();
                 fragmentTransaction.replace(R.id.fragmentID, fragment);
                 fragmentTransaction.commit();
@@ -203,7 +220,10 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
             case R.id.cseId:
                 actionBarText.setText("CSE");
-                fragment = new CseFragment();
+                bundle = new Bundle();
+                bundle.putString("dept_Key", "CSE");
+                fragment = new DepartmentNoticeFragment();
+                fragment.setArguments(bundle);
                 fragmentTransaction = getSupportFragmentManager().beginTransaction();
                 fragmentTransaction.replace(R.id.fragmentID, fragment);
                 fragmentTransaction.commit();
@@ -211,7 +231,10 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
             case R.id.sweId:
                 actionBarText.setText("SWE");
-                fragment = new SweFragment();
+                bundle = new Bundle();
+                bundle.putString("dept_Key", "SWE");
+                fragment = new DepartmentNoticeFragment();
+                fragment.setArguments(bundle);
                 fragmentTransaction = getSupportFragmentManager().beginTransaction();
                 fragmentTransaction.replace(R.id.fragmentID, fragment);
                 fragmentTransaction.commit();
@@ -219,7 +242,10 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
             case R.id.eeeId:
                 actionBarText.setText("EEE");
-                fragment = new EeeFragment();
+                bundle = new Bundle();
+                bundle.putString("dept_Key", "EEE");
+                fragment = new DepartmentNoticeFragment();
+                fragment.setArguments(bundle);
                 fragmentTransaction = getSupportFragmentManager().beginTransaction();
                 fragmentTransaction.replace(R.id.fragmentID, fragment);
                 fragmentTransaction.commit();
@@ -227,7 +253,10 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
             case R.id.bbaId:
                 actionBarText.setText("BBA");
-                fragment = new BbaFragment();
+                bundle = new Bundle();
+                bundle.putString("dept_Key", "BBA");
+                fragment = new DepartmentNoticeFragment();
+                fragment.setArguments(bundle);
                 fragmentTransaction = getSupportFragmentManager().beginTransaction();
                 fragmentTransaction.replace(R.id.fragmentID, fragment);
                 fragmentTransaction.commit();
@@ -235,7 +264,10 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
             case R.id.englishId:
                 actionBarText.setText("English");
-                fragment = new EngFragment();
+                bundle = new Bundle();
+                bundle.putString("dept_Key", "English");
+                fragment = new DepartmentNoticeFragment();
+                fragment.setArguments(bundle);
                 fragmentTransaction = getSupportFragmentManager().beginTransaction();
                 fragmentTransaction.replace(R.id.fragmentID, fragment);
                 fragmentTransaction.commit();
@@ -243,7 +275,10 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
             case R.id.nfeId:
                 actionBarText.setText("NFE");
-                fragment = new NfeFragment();
+                bundle = new Bundle();
+                bundle.putString("dept_Key", "NFE");
+                fragment = new DepartmentNoticeFragment();
+                fragment.setArguments(bundle);
                 fragmentTransaction = getSupportFragmentManager().beginTransaction();
                 fragmentTransaction.replace(R.id.fragmentID, fragment);
                 fragmentTransaction.commit();
@@ -251,7 +286,10 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
             case R.id.physicsId:
                 actionBarText.setText("Physics");
-                fragment = new PhyFragment();
+                bundle = new Bundle();
+                bundle.putString("dept_Key", "Physics");
+                fragment = new DepartmentNoticeFragment();
+                fragment.setArguments(bundle);
                 fragmentTransaction = getSupportFragmentManager().beginTransaction();
                 fragmentTransaction.replace(R.id.fragmentID, fragment);
                 fragmentTransaction.commit();
@@ -259,7 +297,10 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
             case R.id.mathId:
                 actionBarText.setText("Mathematics");
-                fragment = new MathFragment();
+                bundle = new Bundle();
+                bundle.putString("dept_Key", "Mathematics");
+                fragment = new DepartmentNoticeFragment();
+                fragment.setArguments(bundle);
                 fragmentTransaction = getSupportFragmentManager().beginTransaction();
                 fragmentTransaction.replace(R.id.fragmentID, fragment);
                 fragmentTransaction.commit();
@@ -268,6 +309,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
             case R.id.homeID:
                 if (netInfo != null && netInfo.isConnectedOrConnecting()) {
                     actionBarText.setText("General Notice");
+                    setBtnVisibility();
                     fragment = new HomeFragment();
                     fragmentTransaction = getSupportFragmentManager().beginTransaction();
                     fragmentTransaction.replace(R.id.fragmentID, fragment, "MY_FRAGMENT");
@@ -284,6 +326,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
             case R.id.aboutID:
                 if (netInfo != null && netInfo.isConnectedOrConnecting()) {
                     actionBarText.setText("About");
+                    setBtnVisibility();
                     fragment = new AboutFragment();
                     fragmentTransaction = getSupportFragmentManager().beginTransaction();
                     fragmentTransaction.replace(R.id.fragmentID, fragment);
@@ -300,6 +343,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
             case R.id.profileID:
                 if (netInfo != null && netInfo.isConnectedOrConnecting()) {
                     actionBarText.setText("Profile");
+                    addNoticeBtn.setVisibility(View.GONE);
                     fragment = new ProfileFragment();
                     fragmentTransaction = getSupportFragmentManager().beginTransaction();
                     fragmentTransaction.replace(R.id.fragmentID, fragment);
@@ -331,40 +375,8 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
             ProfileFragment.backBtnListener.onBackPressed();
         }
 
-        if(EteFragment.backBtnListener!=null){
-            EteFragment.backBtnListener.onBackPressed();
-        }
-
-        if(CseFragment.backBtnListener!=null){
-            CseFragment.backBtnListener.onBackPressed();
-        }
-
-        if(EeeFragment.backBtnListener!=null){
-            EeeFragment.backBtnListener.onBackPressed();
-        }
-
-        if(EngFragment.backBtnListener!=null){
-            EngFragment.backBtnListener.onBackPressed();
-        }
-
-        if(MathFragment.backBtnListener!=null){
-            MathFragment.backBtnListener.onBackPressed();
-        }
-
-        if(PhyFragment.backBtnListener!=null){
-            PhyFragment.backBtnListener.onBackPressed();
-        }
-
-        if(BbaFragment.backBtnListener!=null){
-            BbaFragment.backBtnListener.onBackPressed();
-        }
-
-        if(NfeFragment.backBtnListener!=null){
-            NfeFragment.backBtnListener.onBackPressed();
-        }
-
-        if(SweFragment.backBtnListener!=null){
-            SweFragment.backBtnListener.onBackPressed();
+        if(DepartmentNoticeFragment.backBtnListener!=null){
+            DepartmentNoticeFragment.backBtnListener.onBackPressed();
         }
     }
 }
