@@ -4,9 +4,11 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
@@ -147,10 +149,12 @@ public class HomeFragment extends Fragment implements BackListenerFragment{
             alertDialogBuilder.setCancelable(false);
 
             alertDialogBuilder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+//                @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     getActivity().finish();
-                    System.exit(0);
+                    getActivity().finishAffinity();
+//                    ((MainActivity) getActivity()).finishAndRemoveTask();
                 }
             });
 
