@@ -88,8 +88,8 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         navigationView.setItemIconTintList(null);
         navigationView.bringToFront();
 
-        notificationBtn = findViewById(R.id.notificationId);
-        notificationBtn.setOnClickListener(this);
+//        notificationBtn = findViewById(R.id.notificationId);
+//        notificationBtn.setOnClickListener(this);
         bottomNavigationView = findViewById(R.id.bottomNavigationID);
         bottomNavigationView.setOnItemSelectedListener(this);
         addNoticeBtn = findViewById(R.id.addNoticeBtnId);
@@ -195,11 +195,11 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
     @Override
     public void onClick(View view) {
-        if(view.getId()==R.id.notificationId){
-            finish();
-            Intent intent = new Intent(MainActivity.this, NotificationActivity.class);
-            startActivity(intent);
-        }
+//        if(view.getId()==R.id.notificationId){
+//            finish();
+//            Intent intent = new Intent(MainActivity.this, NotificationActivity.class);
+//            startActivity(intent);
+//        }
     }
 
     @Override

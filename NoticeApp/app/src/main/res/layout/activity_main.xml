@@ -45,6 +45,7 @@
                     android:layout_gravity="center"/>
 
                 <ImageView
+                    android:visibility="gone"
                     android:id="@+id/notificationId"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -54,30 +55,44 @@
 
             </FrameLayout>
 
-            <fragment
-                android:id="@+id/fragmentID"
-                android:name="com.example.noticeapp.HomePage.HomeFragment"
+            <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
+                android:layout_height="match_parent">
 
-            <TextView
-                android:id="@+id/addNoticeBtnId"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="10dp"
-                android:layout_marginTop="-120dp"
-                android:layout_gravity="center|bottom|right"
-                android:background="@drawable/back_design"
-                android:gravity="center"
-                android:paddingTop="10dp"
-                android:paddingBottom="10dp"
-                android:paddingRight="15dp"
-                android:paddingLeft="15dp"
-                android:text=" Add Notice"
-                android:textColor="#fff"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                android:drawableLeft="@drawable/ic_baseline_add_24"/>
+                <fragment
+                    android:id="@+id/fragmentID"
+                    android:name="com.example.noticeapp.HomePage.HomeFragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"/>
+
+                <TextView
+                    android:id="@+id/addNoticeBtnId"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:layout_gravity="center|bottom|right"
+                    android:background="@drawable/back_design"
+                    android:gravity="center"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    android:paddingRight="15dp"
+                    android:paddingLeft="15dp"
+                    android:text=" Add Notice"
+                    android:textColor="#fff"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:drawableLeft="@drawable/ic_baseline_add_24"
+                    android:layout_marginBottom="70dp"/>
+
+                <com.google.android.material.bottomnavigation.BottomNavigationView
+                    android:id="@+id/bottomNavigationID"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:menu="@menu/bottom_navigation_menu"
+                    android:layout_gravity="bottom|center"
+                    android:background="#fff" />
+
+            </FrameLayout>
 
         </LinearLayout>
 
@@ -87,17 +102,8 @@
             android:id="@+id/navigationViewID"
             app:menu="@menu/activity_main_drawer"
             app:headerLayout="@layout/nav_header_main"
-            android:layout_gravity="start"
-            android:layout_marginBottom="55dp"/>
+            android:layout_gravity="start"/>
 
     </androidx.drawerlayout.widget.DrawerLayout>
-
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottomNavigationID"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:menu="@menu/bottom_navigation_menu"
-        android:layout_gravity="bottom|center"
-        android:background="#fff" />
 
 </FrameLayout>
